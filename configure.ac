@@ -16,6 +16,17 @@ if test "$enable_omx_debug" = "yes"; then
 AC_DEFINE([__ENABLE_DEBUG__], [1], [Defined to 1 if extra debug symbols are compiled])
 fi
 
+AC_ARG_ENABLE(libvacodec,
+    AC_HELP_STRING([--enable-libvacodec],
+                   [use libvacodec @<:@default=no@:>@]),
+   [], [enable_libvacodec="no"])
+
+if test "$enable_libvacodec" = "yes"; then
+    AC_DEFINE([__USE_LIBVACODEC__], [1], [use libvacodec])
+else
+    AC_DEFINE([__USE_LIBVACODEC__], [0], [do not use libvacodec])
+fi
+
 AC_ARG_ENABLE(native_buffer,
     AC_HELP_STRING([--enable-native-buffer],
                    [use native buffer @<:@default=yes@:>@]),
